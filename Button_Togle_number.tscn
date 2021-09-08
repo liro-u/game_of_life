@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="1" type="Button"]
+margin_right = 78.0
+margin_bottom = 51.0
+rect_pivot_offset = Vector2( -685.454, 26.5083 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = true
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}

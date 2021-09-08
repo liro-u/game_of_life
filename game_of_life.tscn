@@ -1,0 +1,708 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Control.gd" type="Script" id=1]
+[ext_resource path="res://ColorRect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Oswald-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Button_Togle_number.tscn" type="PackedScene" id=4]
+[ext_resource path="res://theme.tres" type="Theme" id=5]
+
+[sub_resource type="InputEventAction" id=1]
+action = "mode"
+pressed = true
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=4]
+default_font = SubResource( 3 )
+
+[sub_resource type="InputEventAction" id=5]
+action = "random"
+pressed = true
+
+[sub_resource type="ShortCut" id=6]
+shortcut = SubResource( 5 )
+
+[sub_resource type="InputEventAction" id=7]
+action = "fill"
+pressed = true
+
+[sub_resource type="ShortCut" id=8]
+shortcut = SubResource( 7 )
+
+[sub_resource type="InputEventAction" id=9]
+action = "kill_all"
+pressed = true
+
+[sub_resource type="ShortCut" id=10]
+shortcut = SubResource( 9 )
+
+[sub_resource type="InputEventAction" id=11]
+action = "torique"
+pressed = true
+
+[sub_resource type="ShortCut" id=12]
+shortcut = SubResource( 11 )
+
+[sub_resource type="InputEventAction" id=13]
+action = "compteur"
+pressed = true
+
+[sub_resource type="ShortCut" id=14]
+shortcut = SubResource( 13 )
+
+[sub_resource type="InputEventAction" id=15]
+action = "start"
+pressed = true
+
+[sub_resource type="ShortCut" id=16]
+shortcut = SubResource( 15 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+node_instance = ExtResource( 2 )
+timer_path = NodePath("Timer")
+gridContainer_path = NodePath("HBoxContainer/GridContainer")
+start_stop_button_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/start_stop")
+compteur_labbel_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/HBoxContainer/Valeur")
+color_picker_1_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color1/ColorPickerButton1")
+color_picker_2_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color2/ColorPickerButton2")
+button_death_condition_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid")
+button_birth_condition_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid")
+text_enter_timer_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Timer_option/valeur")
+text_mode_progress_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/mode progress/Button_progress_mode")
+box_timer_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Timer_option")
+text_enter_colonne_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne/valeur_colonne")
+text_enter_ligne_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne/valeur_ligne")
+text_torique_path = NodePath("HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/torique")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer"]
+margin_right = 596.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+margin_left = 600.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 424, 0 )
+rect_clip_content = true
+theme = ExtResource( 5 )
+
+[node name="margin" type="MarginContainer" parent="HBoxContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Panel/margin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 414.0
+margin_bottom = 590.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer"]
+margin_right = 404.0
+margin_bottom = 45.0
+
+[node name="Compteur" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/HBoxContainer"]
+margin_right = 162.0
+margin_bottom = 45.0
+text = "Générations :"
+
+[node name="Valeur" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/HBoxContainer"]
+margin_left = 166.0
+margin_right = 183.0
+margin_bottom = 45.0
+text = "0"
+
+[node name="scroll_box" type="ScrollContainer" parent="HBoxContainer/Panel/margin/VBoxContainer"]
+margin_top = 49.0
+margin_right = 404.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="margin" type="MarginContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box"]
+margin_right = 392.0
+margin_bottom = 1902.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_right = 10
+
+[node name="option_list" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin"]
+margin_right = 382.0
+margin_bottom = 1902.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Option"
+align = 1
+valign = 1
+
+[node name="Ligne" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 55.0
+margin_right = 382.0
+margin_bottom = 110.0
+custom_constants/separation = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne"]
+margin_top = 5.0
+margin_right = 207.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+text = "Ligne"
+
+[node name="moins_l" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne"]
+margin_left = 214.0
+margin_right = 238.0
+margin_bottom = 55.0
+text = "<"
+
+[node name="valeur_ligne" type="LineEdit" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne"]
+margin_left = 245.0
+margin_right = 351.0
+margin_bottom = 55.0
+rect_clip_content = true
+text = "50"
+
+[node name="plus_l" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne"]
+margin_left = 358.0
+margin_right = 382.0
+margin_bottom = 55.0
+text = ">"
+
+[node name="Colonne" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 120.0
+margin_right = 382.0
+margin_bottom = 175.0
+custom_constants/separation = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne"]
+margin_top = 5.0
+margin_right = 207.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+text = "Colonne"
+
+[node name="moins_c" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne"]
+margin_left = 214.0
+margin_right = 238.0
+margin_bottom = 55.0
+text = "<"
+
+[node name="valeur_colonne" type="LineEdit" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne"]
+margin_left = 245.0
+margin_right = 351.0
+margin_bottom = 55.0
+rect_clip_content = true
+text = "50"
+
+[node name="plus_c" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne"]
+margin_left = 358.0
+margin_right = 382.0
+margin_bottom = 55.0
+text = ">"
+
+[node name="mode progress" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 185.0
+margin_right = 382.0
+margin_bottom = 236.0
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/mode progress"]
+margin_top = 3.0
+margin_right = 153.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+text = "Mode"
+
+[node name="Button_progress_mode" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/mode progress"]
+margin_left = 157.0
+margin_right = 382.0
+margin_bottom = 51.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 2 )
+text = "vitesse maximum"
+
+[node name="Timer_option" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+visible = false
+margin_top = 246.0
+margin_right = 382.0
+margin_bottom = 339.0
+rect_clip_content = true
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Timer_option"]
+margin_right = 272.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+text = "Temps entre
+génération :"
+
+[node name="valeur" type="LineEdit" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Timer_option"]
+margin_left = 276.0
+margin_right = 382.0
+margin_bottom = 93.0
+rect_clip_content = true
+text = "0.1"
+max_length = 7
+expand_to_text_length = true
+
+[node name="Death condition" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 246.0
+margin_right = 382.0
+margin_bottom = 456.0
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Conditions de survie :"
+
+[node name="Grid" type="GridContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 210.0
+columns = 3
+
+[node name="0" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_right = 124.0
+text = "0"
+
+[node name="1" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_right = 252.0
+
+[node name="2" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_right = 380.0
+pressed = true
+text = "2"
+
+[node name="3" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_top = 55.0
+margin_right = 124.0
+margin_bottom = 106.0
+pressed = true
+text = "3"
+
+[node name="4" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_top = 55.0
+margin_right = 252.0
+margin_bottom = 106.0
+text = "4"
+
+[node name="5" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_top = 55.0
+margin_right = 380.0
+margin_bottom = 106.0
+text = "5"
+
+[node name="6" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_top = 110.0
+margin_right = 124.0
+margin_bottom = 161.0
+text = "6"
+
+[node name="7" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_top = 110.0
+margin_right = 252.0
+margin_bottom = 161.0
+text = "7"
+
+[node name="8" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_top = 110.0
+margin_right = 380.0
+margin_bottom = 161.0
+text = "8"
+
+[node name="Birth condition2" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 466.0
+margin_right = 382.0
+margin_bottom = 676.0
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Conditions de naissance :"
+
+[node name="Grid" type="GridContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 210.0
+columns = 3
+
+[node name="0" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_right = 124.0
+text = "0"
+
+[node name="1" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_right = 252.0
+
+[node name="2" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_right = 380.0
+text = "2"
+
+[node name="3" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_top = 55.0
+margin_right = 124.0
+margin_bottom = 106.0
+pressed = true
+text = "3"
+
+[node name="4" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_top = 55.0
+margin_right = 252.0
+margin_bottom = 106.0
+text = "4"
+
+[node name="5" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_top = 55.0
+margin_right = 380.0
+margin_bottom = 106.0
+text = "5"
+
+[node name="6" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_top = 110.0
+margin_right = 124.0
+margin_bottom = 161.0
+text = "6"
+
+[node name="7" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 128.0
+margin_top = 110.0
+margin_right = 252.0
+margin_bottom = 161.0
+text = "7"
+
+[node name="8" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid" instance=ExtResource( 4 )]
+margin_left = 256.0
+margin_top = 110.0
+margin_right = 380.0
+margin_bottom = 161.0
+text = "8"
+
+[node name="color1" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 686.0
+margin_right = 382.0
+margin_bottom = 731.0
+rect_clip_content = true
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color1"]
+margin_right = 308.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Couleur mort"
+
+[node name="ColorPickerButton1" type="ColorPickerButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color1"]
+margin_left = 312.0
+margin_right = 382.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 70, 0 )
+theme = SubResource( 4 )
+color = Color( 0.164706, 0.678431, 0.545098, 1 )
+
+[node name="color2" type="HBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 741.0
+margin_right = 382.0
+margin_bottom = 786.0
+rect_clip_content = true
+
+[node name="Title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color2"]
+margin_right = 308.0
+margin_bottom = 45.0
+size_flags_horizontal = 3
+text = "Couleur vie"
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color2"]
+margin_left = 312.0
+margin_right = 382.0
+margin_bottom = 45.0
+rect_min_size = Vector2( 70, 0 )
+theme = SubResource( 4 )
+color = Color( 1, 1, 1, 1 )
+
+[node name="load_file_Oscilateur" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 796.0
+margin_right = 382.0
+margin_bottom = 951.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_Oscilateur"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Oscilateur"
+
+[node name="selection_file" type="OptionButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_Oscilateur"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 100.0
+text = "le clignotant"
+items = [ "le clignotant", null, false, 0, null, "oscillateur seul", null, false, 1, null, "figure de valentin", null, false, 2, null, "la grenouille", null, false, 3, null, "la galaxie de kok", null, false, 4, null, "le cercle de feu", null, false, 5, null ]
+selected = 0
+
+[node name="load" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_Oscilateur"]
+margin_top = 104.0
+margin_right = 382.0
+margin_bottom = 155.0
+text = "importer"
+
+[node name="load_file_stable" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 961.0
+margin_right = 382.0
+margin_bottom = 1116.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_stable"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Figure stable"
+
+[node name="selection_file" type="OptionButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_stable"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 100.0
+text = "la barge"
+items = [ "la barge", null, false, 0, null, "la miche de pain", null, false, 1, null, "la ruche", null, false, 2, null, "le bateau", null, false, 3, null, "le bloc", null, false, 4, null, "le navire", null, false, 5, null, "le porte avion", null, false, 6, null, "le serpent", null, false, 7, null, "le tube", null, false, 8, null, "l'hamecon", null, false, 9, null ]
+selected = 0
+
+[node name="load" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_stable"]
+margin_top = 104.0
+margin_right = 382.0
+margin_bottom = 155.0
+text = "importer"
+
+[node name="load_file_planeur" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1126.0
+margin_right = 382.0
+margin_bottom = 1281.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_planeur"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Planeur"
+
+[node name="selection_file" type="OptionButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_planeur"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 100.0
+text = "le planeur"
+items = [ "le planeur", null, false, 0, null, "le canon", null, false, 1, null ]
+selected = 0
+
+[node name="load" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_planeur"]
+margin_top = 104.0
+margin_right = 382.0
+margin_bottom = 155.0
+text = "importer"
+
+[node name="load_file_canon" type="VBoxContainer" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1291.0
+margin_right = 382.0
+margin_bottom = 1446.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="title" type="Label" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_canon"]
+margin_right = 382.0
+margin_bottom = 45.0
+text = "Canon"
+
+[node name="selection_file" type="OptionButton" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_canon"]
+margin_top = 49.0
+margin_right = 382.0
+margin_bottom = 100.0
+text = "le canon de gospeur"
+items = [ "le canon de gospeur", null, false, 0, null ]
+selected = 0
+
+[node name="load" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_canon"]
+margin_top = 104.0
+margin_right = 382.0
+margin_bottom = 155.0
+text = "importer"
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 1456.0
+margin_right = 382.0
+margin_bottom = 1476.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="random" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1486.0
+margin_right = 382.0
+margin_bottom = 1537.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 6 )
+text = "randomizer"
+
+[node name="fill with life" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1547.0
+margin_right = 382.0
+margin_bottom = 1598.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 8 )
+text = "remplir de vie"
+
+[node name="fill with death" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1608.0
+margin_right = 382.0
+margin_bottom = 1659.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 10 )
+text = "remplir de mort"
+
+[node name="HSeparator2" type="HSeparator" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 1669.0
+margin_right = 382.0
+margin_bottom = 1689.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="torique" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1699.0
+margin_right = 382.0
+margin_bottom = 1750.0
+toggle_mode = true
+shortcut_in_tooltip = false
+shortcut = SubResource( 12 )
+text = "non torique"
+
+[node name="HSeparator3" type="HSeparator" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 1760.0
+margin_right = 382.0
+margin_bottom = 1780.0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reset_compteur" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1790.0
+margin_right = 382.0
+margin_bottom = 1841.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 14 )
+text = "reinitialiser le compteur"
+
+[node name="start_stop" type="Button" parent="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list"]
+margin_top = 1851.0
+margin_right = 382.0
+margin_bottom = 1902.0
+shortcut_in_tooltip = false
+shortcut = SubResource( 16 )
+text = "lancer"
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne/moins_l" to="." method="_on_moins_l_pressed"]
+[connection signal="text_entered" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne/valeur_ligne" to="." method="_on_valeur_ligne_text_entered"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Ligne/plus_l" to="." method="_on_plus_l_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne/moins_c" to="." method="_on_moins_c_pressed"]
+[connection signal="text_entered" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne/valeur_colonne" to="." method="_on_valeur_colonne_text_entered"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Colonne/plus_c" to="." method="_on_plus_c_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/mode progress/Button_progress_mode" to="." method="_on_Button_progress_mode_pressed"]
+[connection signal="text_entered" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Timer_option/valeur" to="." method="_on_valeur_text_entered"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/0" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/1" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/2" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/3" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/4" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/5" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/6" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/7" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Death condition/Grid/8" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/0" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/1" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/2" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/3" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/4" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/5" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/6" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/7" to="." method="set_start_rule_game"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/Birth condition2/Grid/8" to="." method="set_start_rule_game"]
+[connection signal="color_changed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color1/ColorPickerButton1" to="." method="_on_ColorPickerButton1_color_changed"]
+[connection signal="color_changed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/color2/ColorPickerButton2" to="." method="_on_ColorPickerButton2_color_changed"]
+[connection signal="item_selected" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_Oscilateur/selection_file" to="." method="_on_selection_oscilateur_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_Oscilateur/load" to="." method="_on_load_oscilateur_pressed"]
+[connection signal="item_selected" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_stable/selection_file" to="." method="_on_selection_stable_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_stable/load" to="." method="_on_load_stable_pressed"]
+[connection signal="item_selected" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_planeur/selection_file" to="." method="_on_selection_planeur_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_planeur/load" to="." method="_on_load_planeur_pressed"]
+[connection signal="item_selected" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_canon/selection_file" to="." method="_on_selection_canon_item_selected"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/load_file_canon/load" to="." method="_on_load_canon_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/random" to="." method="_on_random_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/fill with life" to="." method="_on_fill_with_life_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/fill with death" to="." method="_on_fill_with_death_pressed"]
+[connection signal="toggled" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/torique" to="." method="_on_torique_toggled"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/reset_compteur" to="." method="_on_reset_compteur_pressed"]
+[connection signal="pressed" from="HBoxContainer/Panel/margin/VBoxContainer/scroll_box/margin/option_list/start_stop" to="." method="_on_start_stop_pressed"]
